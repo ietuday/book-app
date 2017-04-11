@@ -1,0 +1,41 @@
+<ba-spinner *ngIf="isLoading"></ba-spinner>
+<section *ngIf="book" class="book-details">
+  <div class="row">
+    <div class="col-md-3 cover">
+      <img [src]="config.baseUrl + '' + book.coverUrl" alt="{{ book.title }}">
+      <div *ngIf="book.paid">{{ book.price | currency:'USD':true}}</div>
+      <rating [(ngModel)]="book.rating" (click)="rate(book)" stateOn="fa fa-star" stateOff="fa fa-star-o" class="rate"></rating>
+    </div>
+    <div class="col-md-9">
+      <ba-alert *ngIf="error" [text]="error" [type]="'danger'"></ba-alert>
+      <ba-alert *ngIf="success" [text]="success" [type]="'success'"></ba-alert>
+      <h3>{{ book.title }}</h3>
+      <h4>by {{ book.author }}</h4>
+      <div class="well">{{ book.description || 'No Description'}}</div>
+      <div>
+        <a routerLink="/reading/{{ book.url }}" class="btn btn-primary" role="button" *ngIf="!book.paid">Read Book</a>
+        <button class="btn btn-primary" type="button" *ngIf="book.paid && !isDownloading" (click)="showBuyForm()">Buy Book</button>
+        <button class="btn btn-primary" type="button" (click)="addToFavourites()">Add To Favourite</button>
+        <button class="btn btn-primary" type="button" *ngIf="book.paid" (click)="addToWishlist()">Add to wishlist</button>
+        <button class="btn btn-primary" type="button" (click)="addToMustread()">Add to must read</button>
+        <a routerLink="/edit/{{ book.url }}" class="btn btn-primary" *ngIf="user.roles.includes('admin')">Edit Book</a>
+        <button type="button" class="btn btn-primary" *ngIf="user.roles.includes('admin')" (click)="removeBook()">Remove Book</button>
+      </div>
+      <form #buyFormRef [formGroup]="buyForm" class="form-inline" (ngSubmit)="buyBook()" *ngIf="buyFormVisible" novalidate>
+        <h4>Buy Book</h4>
+        <div class="form-group">
+          <input type="tel" class="form-control" placeholder="Credit Card Number" formControlName="cardNumber" (input)="correctPan($event)">
+          <span id="typecard-icon" [ngClass]="{ visa: typecard === 'visa', maestro:  typecard === 'maestro', mastercard: typecard === 'mastercard' }"></span>
+          <small *ngIf="buyForm.controls['cardNumber'].dirty && buyForm.controls['cardNumber'].errors && buyForm.controls['cardNumber'].errors.required" class="text-danger">Card Number is required!</small>
+          <small *ngIf="buyForm.controls['cardNumber'].dirty && buyForm.controls['cardNumber'].errors && buyForm.controls['cardNumber'].errors.notCreditCard" class="text-danger">Card Number is invalid!</small>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="buyForm.invalid || isSubmitting"><i *ngIf="isSubmitting" class="fa fa-spinner-animate fa-spinner"></i>Buy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <ba-comments [book]="book" [user]="user"></ba-comments>
+  </div>
+</section>

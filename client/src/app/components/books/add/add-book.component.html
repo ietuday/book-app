@@ -1,0 +1,50 @@
+<section class="row">
+  <h3 class="col-md-12 text-center">{{ title }}</h3>
+  <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
+    <ba-alert *ngIf="error" [text]="error" [type]="'danger'"></ba-alert>
+    <ba-alert *ngIf="success" [text]="'Book saved successfuly'" [type]="'success'"></ba-alert>
+    <form [formGroup]="bookForm" (submit)="save()" class="form-horizontal" novalidate autocomplete="off" enctype="multipart/form-data">
+      <fieldset>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" formControlName="title" class="form-control" placeholder="Book Title">
+          <small *ngIf="bookForm.controls['title'].dirty && bookForm.controls['title'].errors && bookForm.controls['title'].errors.required" class="text-danger">Book Title is required!</small>
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" id="author" formControlName="author" class="form-control" placeholder="Book Author">
+          <small *ngIf="bookForm.controls['author'].dirty && bookForm.controls['author'].errors && bookForm.controls['author'].errors.required" class="text-danger">Book Author is required!</small>
+        </div>
+        <div class="form-group">
+          <label for="cover">Cover</label>
+          <i *ngIf="coverUrl" class="fa fa-file-image-o" aria-hidden="true"></i>
+          <input type="file" id="cover" name="cover" class="form-control" placeholder="Book Cover" (change)="onCoverChange($event)">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" class="form-control" rows="10" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="epub">Epub</label>
+          <i *ngIf="epubUrl" class="fa fa-file" aria-hidden="true"></i>
+          <input type="file" id="epub" name="epub" class="form-control" placeholder="Epub" (change)="onEpubChange($event)">
+        </div>
+        <div class="checkbox">
+          <label>
+            <input id="paid" type="checkbox" formControlName="paid"> Paid
+          </label>
+        </div>
+        <div *ngIf="bookForm.controls['paid'].value" class="form-group">
+          <label for="price">Price</label>
+          <input type="text" id="price" formControlName="price" class="form-control" placeholder="Price">
+          <small *ngIf="bookForm.controls['price'].dirty && bookForm.controls['price'].errors && bookForm.controls['price'].errors.required" class="text-danger">Book Price is required!</small>
+          <small *ngIf="bookForm.controls['price'].dirty && bookForm.controls['price'].errors && bookForm.controls['price'].errors.notPrice" class="text-danger">Price Format is invalid!((XXXX).(XX))</small>
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-large btn-primary" [disabled]="bookForm.invalid || isSubmitting"><i *ngIf="isSubmitting" class="fa fa-spinner-animate fa-spinner"></i>Save Book</button>
+          <button type="button" class="btn btn-large btn-primary" (click)="clearForm()">New Book</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

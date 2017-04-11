@@ -1,0 +1,19 @@
+.comments {
+  margin: 0;
+}
+
+@media(min-width: 992px) {
+  .comments .form-control {
+    width: 50%;
+  }
+}
+
+.comments ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+}
+
+.comments cite {
+  font-size: 14px;
+}

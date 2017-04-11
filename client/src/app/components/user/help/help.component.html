@@ -1,0 +1,33 @@
+<section class="row support">
+  <div *ngIf="user && !user.roles.includes('admin')" class="col-md-6">
+    <h4>Please, send your question</h4>
+    <div *ngIf="user" class="form-group">
+      <input type="text" name="user" class="form-control" disabled [value]="user.displayName">
+    </div>
+    <div class="form-group">
+      <textarea name="message" id="message" rows="10" class="form-control" placeholder="Type Your Message" [(ngModel)]="question"></textarea>
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" (click)="sendQuestion()">Ask Question</button>
+    </div>
+  </div>
+  <div *ngIf="messages && messages.length" [ngClass]="{'col-md-6': user && !user.roles.includes('admin'), 'col-md-12': user && user.roles.includes('admin')}">
+    <h4>Dialog</h4>
+    <div class="well">
+      <div *ngFor="let msg of messages" class="dialog-item">
+        <blockquote>
+          {{msg.text}}
+          <br>
+          <cite>
+            - {{msg.author}}
+          </cite>
+        </blockquote>
+        <button type="button" *ngIf="user && user.roles.includes('admin')" class="btn btn-primary" (click)="msg.boxShown = !msg.boxShown">Reply</button>
+        <div class="form-group" *ngIf="msg.boxShown">
+          <textarea name="reply" id="reply" rows="10" class="form-control" [(ngModel)] ="msg.answer"></textarea>
+          <button type="button" (click)="sendAnswer(msg)" class="btn btn-primary">Answer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

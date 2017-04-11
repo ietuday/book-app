@@ -1,0 +1,12 @@
+<ba-header></ba-header>
+<section class="content">
+  <section class="container tbl-row">
+    <aside *ngIf="_userService.isLoggedIn()" class="col-md-2">
+      <ba-sidebar></ba-sidebar>
+    </aside>
+    <main [ngClass]="{'col-md-10': _userService.isLoggedIn()}">
+      <router-outlet></router-outlet>
+    </main>
+  </section>
+  <ba-footer></ba-footer>
+</section>

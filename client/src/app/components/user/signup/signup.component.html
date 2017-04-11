@@ -1,0 +1,40 @@
+<section class="row">
+  <h3 class="col-md-12 text-center">Sign up to start using</h3>
+  <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
+    <ba-alert *ngIf="error" [text]="error" [type]="'danger'"></ba-alert>
+    <form [formGroup]="signupForm" (submit)="signup()" class="signin form-horizontal" novalidate autocomplete="off" enctype="multipart/form-data" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" class="form-control" formControlName="firstName" placeholder="First Name">
+          <small *ngIf="signupForm.controls['firstName'].dirty && signupForm.controls['firstName'].errors && signupForm.controls['firstName'].errors.required" class="text-danger">First Name is required!</small>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" class="form-control" formControlName="lastName" placeholder="Last Name">
+          <small *ngIf="signupForm.controls['lastName'].dirty && signupForm.controls['lastName'].errors && signupForm.controls['lastName'].errors.required" class="text-danger">Last Name is required!</small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" formControlName="email" placeholder="Email">
+          <small *ngIf="signupForm.controls['email'].dirty && signupForm.controls['email'].errors && signupForm.controls['email'].errors.required" class="text-danger">Email is required!</small>
+          <small *ngIf="signupForm.controls['email'].value && signupForm.controls['email'].dirty && signupForm.controls['email'].errors && signupForm.controls['email'].errors.validateEmail" class="text-danger">Invalid Email format!</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" formControlName="password" placeholder="Password">
+          <small *ngIf="signupForm.controls['password'].dirty && signupForm.controls['password'].errors && signupForm.controls['password'].errors.required" class="text-danger">Password is required!</small>
+        </div>
+        <div class="form-group">
+          <label for="avatar">Avatar</label>
+          <img *ngIf="avatarUrl" width="30" height="30" [src]="avatarUrl" alt="avatar">
+          <input type="file" id="avatar" (change)="onFileChange($event)" name="avatar" class="form-control" placeholder="Avatar">
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-large btn-primary" [disabled]="signupForm.invalid || isSubmitting"><i *ngIf="isSubmitting" class="fa fa-spinner-animate fa-spinner"></i>Sign up</button>&nbsp; or&nbsp;
+          <a [routerLink]="['/signin']" class="show-signup">Sign in</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

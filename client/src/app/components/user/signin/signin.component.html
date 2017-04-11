@@ -1,0 +1,28 @@
+<section class="row">
+  <h3 class="col-md-12 text-center">Sign in using your account</h3>
+  <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
+    <ba-alert *ngIf="error" [text]="error" [type]="'danger'"></ba-alert>
+    <form [formGroup]="signinForm" (submit)="signin()" class="signin form-horizontal" autocomplete="off" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email">
+          <small *ngIf="signinForm.controls['email'].dirty && signinForm.controls['email'].errors && signinForm.controls['email'].errors.required" class="text-danger">Email is required!</small>
+          <small *ngIf="signinForm.controls['email'].value && signinForm.controls['email'].dirty && signinForm.controls['email'].errors && signinForm.controls['email'].errors.validateEmail" class="text-danger">Invalid Email format!</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
+          <small *ngIf="signinForm.controls['password'].dirty && signinForm.controls['password'].errors && signinForm.controls['password'].errors.required" class="text-danger">Password is required!</small>
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="signinForm.invalid || isSubmitting"><i *ngIf="isSubmitting" class="fa fa-spinner-animate fa-spinner"></i>Sign in</button>&nbsp; or&nbsp;
+          <a [routerLink]="['/signup']">Sign up</a>
+        </div>
+        <div class="forgot-password">
+          <a [routerLink]="['/forgot']">Forgot your password?</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

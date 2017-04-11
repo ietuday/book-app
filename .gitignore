@@ -1,0 +1,41 @@
+.idea/
+server/node_modules
+/server/src/config/local.env.js
+/server/coverage
+# compiled output
+/client/dist
+/client/tmp
+
+/server/dist
+
+# dependencies
+/client/node_modules
+/client/bower_components
+
+# IDEs and editors
+/client/.idea
+/client/.vscode
+/client/.project
+/client/.classpath
+/client/*.launch
+/client/.settings/
+
+# misc
+/client/.sass-cache
+/client/connect.lock
+/client/coverage/*
+/client/libpeerconnection.log
+/client/npm-debug.log
+/client/testem.log
+/client/typings
+
+# e2e
+/client/e2e/*.js
+/client/e2e/*.map
+
+#System Files
+/client/.DS_Store
+/client/Thumbs.db
+/client/node_modules/
+/client/dist/
+/server/dist/

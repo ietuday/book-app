@@ -1,0 +1,50 @@
+<section class="row">
+  <div class="content-nav">
+    <h2>{{ title }}</h2>
+    <div *ngIf="page === '/browse' || page === '/buy'" class="row">
+      <div class="filter col-md-6">
+        <input type="radio" name="sort" (change)="changeSorting($event)" value="" id="all" checked>
+        <label for="all">All books</label>
+        <input type="radio" name="sort" (change)="changeSorting($event)" value="added_at" id="recent">
+        <label for="recent">Most recent</label>
+        <input type="radio" name="sort" (change)="changeSorting($event)" value="views" id="popular">
+        <label for="popular">Most popular</label>
+      </div>
+      <div id="search" class="col-md-6 clearfix">
+        <input type="text" name="search" (keyup)="search($event)" placeholder="Enter Keywords" class="form-control">
+        <button class="disabled"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="goods row">
+    <div class="col-md-3 col-sm-6" *ngFor="let book of books">
+      <div class="item">
+        <div class="cover">
+          <a *ngIf="!book.paid" routerLink="/browse/{{ book.url }}">
+            <img [src]="config.baseUrl + '' + book.coverUrl" alt="{{ book.title }}">
+          </a>
+          <a *ngIf="book.paid" routerLink="/buy/{{ book.url }}">
+            <img [src]="config.baseUrl + '' + book.coverUrl" alt="{{ book.title }}">
+          </a>
+        </div>
+        <a *ngIf="!book.paid" routerLink="/browse/{{ book.url }}">
+          <span class="title">{{ book.title }}
+            <i *ngIf="page === '/mustread'" class="fa fa-trash-o pull-right" aria-hidden="true" (click)="removeFromMustread($event, book)"></i>
+            <i *ngIf="page === '/favourite'" class="fa fa-trash-o pull-right" aria-hidden="true" (click)="removeFromFavourites($event, book)"></i>
+            <i *ngIf="page === '/wishlist'" class="fa fa-trash-o pull-right" aria-hidden="true" (click)="removeFromWishlist($event, book)"></i>
+          </span>
+        </a>
+        <a *ngIf="book.paid" routerLink="/buy/{{ book.url }}">
+          <span class="title">{{ book.title }}
+            <i *ngIf="page === '/mustread'" class="fa fa-trash-o pull-right" aria-hidden="true" (click)="removeFromMustread($event, book)"></i>
+            <i *ngIf="page === '/favourite'" class="fa fa-trash-o pull-right" aria-hidden="true" (click)="removeFromFavourites($event, book)"></i>
+            <i *ngIf="page === '/wishlist'" class="fa fa-trash-o pull-right" aria-hidden="true" (click)="removeFromWishlist($event, book)"></i>
+          </span>
+        </a>
+        <span class="author">by {{ book.author }}</span>
+        <div *ngIf="book.paid">{{ book.price | currency:'USD':true }}</div>
+        <rating [(ngModel)]="book.rating" (click)="rate(book)" stateOn="fa fa-star" stateOff="fa fa-star-o" class="rate"></rating>
+      </div>
+    </div>
+  </div>
+</section>

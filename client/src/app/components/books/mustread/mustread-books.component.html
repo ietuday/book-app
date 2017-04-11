@@ -1,0 +1,3 @@
+<ba-spinner *ngIf="isLoading"></ba-spinner>
+<ba-alert *ngIf="error" [text]="error" [type]="'danger'"></ba-alert>
+<ba-book-list [page]="page" [title]="title" [books]="books" (rated)="rate($event)" (removedFromMustread)="removeFromMustread($event)"></ba-book-list>

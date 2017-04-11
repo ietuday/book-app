@@ -1,0 +1,7 @@
+{
+  "/fs": {
+    "target": "http://bookappserver-den2710.rhcloud.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

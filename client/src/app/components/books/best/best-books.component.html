@@ -1,0 +1,2 @@
+<ba-spinner *ngIf="isLoading"></ba-spinner>
+<ba-book-list [page]="page" [title]="title" [books]="books" (rated)="rate($event)"></ba-book-list>

@@ -1,0 +1,30 @@
+<div class="comments col-xs-12">
+  <h4>Comments</h4>
+  <p *ngIf="!comments">No Comments</p>
+  <ul class="well" *ngIf="comments">
+    <li *ngFor="let message of comments.messages">
+      <blockquote>
+        {{ message.text }}
+        <cite class="clearfix">—{{ message.author.displayName }} ( {{ message.created_at | date:'mediumDate' }} )</cite>
+      </blockquote>
+    </li>
+  </ul>
+  <form name="commentForm" #commentFormRef="ngForm" (ngSubmit)="submitComment(commentFormRef)" novalidate>
+    <!--  Live Preview -->
+    <h4>Submit a Comment</h4>
+    <blockquote >
+      {{ comment }}
+      <cite class="clearfix">—  {{ user.displayName }}</cite>
+    </blockquote>
+    <fieldset class="form-group">
+      <textarea [(ngModel)]="comment" name="comment" class="form-control" placeholder="Write a short comment..." title="Comment" rows="5" required></textarea>
+      <small *ngIf="commentFormRef.dirty && commentFormRef.invalid" class="text-danger">Comment text is required!</small>
+    </fieldset>
+    <fieldset class="form-group">
+      <input type="text" class="form-control" title="Name" [value]="user.displayName" disabled>
+    </fieldset>
+    <fieldset class="form-group">
+      <button type="submit" class="btn btn-large btn-primary" [disabled]="commentFormRef.invalid || isSubmitting"><i *ngIf="isSubmitting" class="fa fa-spinner-animate fa-spinner"></i>Submit Comment</button>
+    </fieldset>
+  </form>
+</div>

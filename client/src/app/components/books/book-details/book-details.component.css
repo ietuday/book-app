@@ -1,0 +1,96 @@
+.book-details {
+  padding: 20px 0;
+}
+
+.book-details .row {
+  margin: 0;
+}
+
+.book-details .cover {
+  height: 325px;
+}
+
+.book-details .cover:hover {
+  box-shadow: none;
+}
+
+.book-details img {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.book-read h3 {
+  text-align: center;
+  color: #78829d;
+}
+
+.book-read h3 small {
+  display: block;
+}
+
+.book-read .cover {
+  text-align: center;
+}
+
+.book-read .cover:hover {
+  box-shadow: none;
+}
+
+.rate {
+  color: #ffab00;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 5px;
+}
+
+#typecard-icon {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 3px;
+  line-height: 45px;
+  color: #909090;
+  width: 30px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: 1px 1px;
+  background-size: contain;
+  font-size: 16px;
+  opacity: 1;
+  border: 1px solid #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-transition: opacity, background-image 1s;
+  -webkit-transition: opacity, background-image 1s;
+  -o-transition: opacity, background-image 1s;
+  transition: opacity, background-image 1s;
+  background-image: url("../assets/img/type-card.png");
+}
+#typecard-icon.visa,
+#typecard-icon.mc,
+#typecard-icon.maestro,
+#typecard-icon.MASTERCARD,
+#typecard-icon.mastercard,
+#typecard-icon.MAESTRO {
+  border: 1px solid #F3F3F3;
+  opacity: 1;
+  -moz-transition: opacity, background-image 1s;
+  -webkit-transition: opacity, background-image 1s;
+  -o-transition: opacity, background-image 1s;
+  transition: opacity, background-image 1s;
+}
+#typecard-icon.visa,
+#typecard-icon.VISA {
+  background-image: url("../assets/img/type-visa.png");
+}
+#typecard-icon.mc,
+#typecard-icon.MASTERCARD,
+#typecard-icon.mastercard {
+  background-image: url("../assets/img/type-mc.png");
+}
+#typecard-icon.maestro,
+#typecard-icon.MAESTRO {
+  background-image: url("../assets/img/type-maestro.png");
+}

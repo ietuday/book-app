@@ -1,0 +1,53 @@
+<header class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#menu">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a [routerLink]="['']" class="navbar-brand"><i class="fa fa-book"></i> My Book App</a>
+    </div>
+    <nav class="collapse navbar-collapse" id="menu" role="navigation">
+      <ul class="nav navbar-nav navbar-right user" *ngIf="_userService.isLoggedIn()">
+        <li class="dropdown" dropdown>
+          <a *ngIf="user" href="" class="dropdown-toggle" dropdownToggle>
+            <img [src]="config.baseUrl + '' + user.avatarUrl" alt="avatar">
+            <span>{{ user.displayName }}</span> <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu" dropdownMenu>
+            <li class="dropdown-item">
+              <a [routerLink]="['profile']">Edit Profile</a>
+            </li>
+            <li class="dropdown-item">
+              <a [routerLink]="['password-change']">Change Password</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-item">
+              <a href="#" (click)="$event.preventDefault(); signout()">Signout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!_userService.isLoggedIn()">
+        <li routerLinkActive="active">
+          <a [routerLink]="['signup']">Sign Up</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['signin']">Sign In</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="_userService.isLoggedIn()">
+        <li routerLinkActive="active">
+          <a [routerLink]="['help']">Help Center</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a><i class="fa fa-circle" [ngClass]="{online: isAdminOnline, offline: !isAdminOnline}"> </i>Our Support</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

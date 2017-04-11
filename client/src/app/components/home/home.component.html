@@ -1,0 +1,20 @@
+<section class="home">
+  <div class="jumbotron text-center">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+        <h1><i class="fa fa-book"></i> {{title}}</h1>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <p class="lead">
+        The Best Application to Read, Search and Buy Books Online
+      </p>
+    </div>
+    <div class="row">
+      <p>
+        <a class="btn btn-primary btn-lg" [routerLink]="['signup']" *ngIf="!_userService.isLoggedIn()">Sign Up To Start Using</a>
+      </p>
+    </div>
+  </div>
+</section>

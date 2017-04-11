@@ -1,0 +1,35 @@
+<section class="row">
+  <h3 class="col-md-12 text-center">Edit your profile</h3>
+  <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
+    <ba-alert *ngIf="error" [text]="error" [type]="'danger'"></ba-alert>
+    <ba-alert *ngIf="success" [text]="'Profile changed successfuly'" [type]="'success'"></ba-alert>
+    <form [formGroup]="profileForm" (submit)="saveChanges()" name="profileForm" class="signin form-horizontal" autocomplete="off" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name">
+          <small *ngIf="profileForm.controls['firstName'].dirty && profileForm.controls['firstName'].errors && profileForm.controls['firstName'].errors.required" class="text-danger">First Name is required!</small>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Last Name">
+          <small *ngIf="profileForm.controls['lastName'].dirty && profileForm.controls['lastName'].errors && profileForm.controls['lastName'].errors.required" class="text-danger">Last Name is required!</small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email">
+          <small *ngIf="profileForm.controls['email'].dirty && profileForm.controls['email'].errors && profileForm.controls['email'].errors.required" class="text-danger">Email is required!</small>
+          <small *ngIf="profileForm.controls['email'].value && profileForm.controls['email'].dirty && profileForm.controls['email'].errors && profileForm.controls['email'].errors.validateEmail" class="text-danger">Invalid Email format!</small>
+        </div>
+        <div class="form-group">
+          <label for="avatar">Change Avatar</label>
+          <img width="30" height="30" [src]="avatarUrl" alt="avatar">
+          <input type="file" id="avatar" name="avatar" (change)="onFileChange($event)" class="form-control" placeholder="Avatar">
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-large btn-primary" [disabled]="profileForm.invalid || isSubmitting"><i *ngIf="isSubmitting" class="fa fa-spinner-animate fa-spinner"></i>Save Profile</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

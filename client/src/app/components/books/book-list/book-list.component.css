@@ -1,0 +1,125 @@
+.content-nav {
+  background: #eef1f7;
+  padding: 25px 20px 20px;
+  text-transform: capitalize;
+}
+
+.content-nav h2 {
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.filter {
+  font-size: 12px;
+}
+
+.filter input {
+  display: none;
+}
+.filter label {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.filter input:checked + label {
+  color: #fff;
+  background: #97b3ce;
+}
+
+#search input {
+  margin-top: 20px;
+  height: 30px;
+  border-radius: 30px;
+  outline:0;
+  border: 1px solid #c7cddb;
+  padding-left: 20px;
+}
+
+#search button {
+  border:0;
+  outline:0;
+  background:none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin: 0 7px 0 0;
+  cursor: default;
+}
+
+@media(min-width: 992px) {
+  #search input {
+    float: right;
+    width: 400px;
+    margin-top: 0;
+  }
+
+  #search button {
+    margin-top: -10px;
+  }
+}
+
+.goods {
+  background: #fff;
+  padding: 0 0 20px;
+  margin: 0;
+}
+
+.item {
+  height: 360px;
+  margin: 30px 10px 15px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.cover {
+  height: 275px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: box-shadow .6s;
+}
+
+.cover img {
+  width: 200px;
+  height: 275px;
+  vertical-align: top;
+}
+
+@media(min-width: 768px) {
+  .item {
+    width: 200px;
+  }
+
+  .cover:hover {
+    box-shadow: 0 0 5px 2px rgba(0,0,0,.5);
+  }
+}
+
+.item span {
+  display: block;
+  padding-bottom: 10px;
+}
+
+a .fa {
+  display: none;
+}
+
+a:hover .fa {
+  display: inline-block;
+}
+
+.title {
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.author {
+  font-size: 12px;
+}
+
+.rate {
+  color: #ffab00;
+  cursor: pointer;
+}

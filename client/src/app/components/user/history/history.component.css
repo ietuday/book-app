@@ -1,0 +1,19 @@
+.history {
+  padding: 5px;
+}
+
+.history th {
+  background: #2f364a;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.history th:first-of-type {
+  border-radius: 5px 0 0 0;
+}
+
+.history th:last-of-type {
+  border-radius: 0 5px 0 0;
+  border-left: 1px solid #fff;
+}

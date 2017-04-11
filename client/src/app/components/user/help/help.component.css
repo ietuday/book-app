@@ -1,0 +1,11 @@
+.support .well {
+  overflow: auto;
+}
+
+.dialog-item {
+  margin-top: 10px;
+}
+
+.dialog-item button {
+  margin: 5px 0;
+}

@@ -1,0 +1,22 @@
+<section>
+  <div class="add" *ngIf="user && user.roles.includes('admin')">
+    <a [routerLink]="['add']" class="btn btn-primary" role="button"><i class="fa fa-plus"></i> Add a Book</a>
+  </div>
+  <nav>
+    <a [routerLink]="['reading']" routerLinkActive="active"><i class="fa fa-book"></i> Now reading</a>
+    <a [routerLink]="['browse']" routerLinkActive="active"><i class="fa fa-globe"></i> Browse</a>
+    <a [routerLink]="['buy']" routerLinkActive="active"><i class="fa fa-shopping-cart"></i> Buy books</a>
+    <a [routerLink]="['favourite']" routerLinkActive="active"><i class="fa fa-star"></i> Favourite books</a>
+    <a [routerLink]="['wishlist']" routerLinkActive="active"><i class="fa fa-th-list"></i> Wishlist</a>
+    <a [routerLink]="['history']" routerLinkActive="active"><i class="fa fa-clock-o"></i> History</a>
+  </nav>
+  <nav class="categories">
+    <a [routerLink]="['mustread']" routerLinkActive="active">Must read titles</a>
+    <a [routerLink]="['best']" routerLinkActive="active">List of the Best</a>
+  </nav>
+  <div *ngIf="userHistory && userHistory.length" class="added-list">
+    <div *ngFor="let action of userHistory">
+      <i class="fa fa-clock-o"></i>&nbsp;{{ action.desc }}<span class="time">{{ action.committed_at }}</span>
+    </div>
+  </div>
+</section>

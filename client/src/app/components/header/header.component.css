@@ -1,0 +1,89 @@
+@media (min-width: 992px) {
+  .nav-users {
+    position: fixed;
+  }
+}
+.remove-account-container {
+  display: inline-block;
+  position: relative;
+}
+.btn-remove-account {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+}
+
+.user {
+  background: #15a4fa;
+  border-radius: 0 5px 0 0;
+}
+
+.user .fa-angle-down {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  text-align: center;
+  border-radius: 15px;
+  color: #78829d;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.user a {
+  color: #fff;
+}
+
+.user a:hover {
+  background: transparent;
+}
+
+.user .dropdown-menu {
+  background: #2f364a;
+}
+
+.user .dropdown-menu a {
+  color: #78829d;
+}
+
+.dropdown-menu .dropdown-item > a:hover {
+  color: #fff;
+}
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background: #15a4fa;
+  border-radius: 0 5px 0 0;
+}
+
+.nav > li.active {
+  background: #fff;
+}
+
+.nav >li > a:focus,
+.nav > li >a:hover {
+  background-color: transparent;
+}
+
+.nav > li:last-child.active,
+.nav > li:last-child.active > a {
+  border-radius: 0 5px 0 0;
+}
+
+.nav > li.active > a:hover {
+  color: #337ab7;
+}
+
+.user img {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.user span {
+  line-height: 30px;
+}
